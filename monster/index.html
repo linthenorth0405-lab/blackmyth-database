@@ -23,6 +23,28 @@ mark{background:rgba(199,169,107,.28);color:#fff0c9;padding:0 1px}
 
 .site-nav{position:sticky;top:0;z-index:30;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:10px;background:rgba(7,9,9,.96);border-bottom:1px solid rgba(199,169,107,.28);backdrop-filter:blur(10px)}.site-nav a{color:#d8c28d;text-decoration:none;border:1px solid var(--line);padding:8px 14px;background:#121615}.site-nav a:hover,.site-nav a.active{border-color:var(--gold);color:#fff0c5}
 
+
+/* 精簡顯示：不顯示統計、掉落機率與 ITEM ID */
+.stats,
+.item-id,
+.chance {
+  display: none !important;
+}
+.drop {
+  align-items: center;
+}
+.meta {
+  min-width: 66px;
+}
+.qty {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid rgba(199,169,107,.22);
+  color: #d7c08c;
+  background: rgba(199,169,107,.06);
+  font-size: 11px;
+}
+
 </style>
 </head>
 <body>
@@ -36,14 +58,13 @@ mark{background:rgba(199,169,107,.28);color:#fff0c9;padding:0 1px}
   <div class="eyebrow">BLACK MYTH LINEAGE</div>
   <h1>怪物掉落圖鑑</h1>
   <div class="ornament">◆</div>
-  <p>可搜尋怪物名稱、怪物編號、物品名稱或物品編號。掉落機率依原始資料換算，每一筆皆為獨立判定。</p>
+  <p>可搜尋怪物名稱或掉落物名稱，並依物品類型快速篩選。</p>
 </header>
 <nav class="toolbar">
  <div class="wrap toolbar-inner">
-  <label class="search"><span>⌕</span><input id="q" autocomplete="off" placeholder="搜尋怪物、物品或編號，例如：銀長劍"></label>
+  <label class="search"><span>⌕</span><input id="q" autocomplete="off" placeholder="搜尋怪物或掉落物，例如：銀長劍"></label>
   <div class="filters" id="filters">
    <button class="filter active" data-filter="全部">全部</button>
-   <button class="filter" data-filter="稀有">稀有掉落</button>
    <button class="filter" data-filter="裝備">裝備</button>
    <button class="filter" data-filter="消耗品">消耗品</button>
    <button class="filter" data-filter="材料">材料</button>
@@ -53,12 +74,12 @@ mark{background:rgba(199,169,107,.28);color:#fff0c9;padding:0 1px}
  </div>
 </nav>
 <main class="wrap">
- <div class="resultbar"><div id="summary"></div><label class="sort">排序　<select id="sort"><option value="name">怪物名稱</option><option value="drops">掉落數量</option><option value="rare">稀有掉落</option><option value="id">怪物 ID</option></select></label></div>
+ <div class="resultbar"><div id="summary"></div><label class="sort">排序　<select id="sort"><option value="name">怪物名稱</option><option value="drops">掉落數量</option><option value="id">怪物 ID</option></select></label></div>
  <section class="grid" id="grid"></section>
  <div class="pagination" id="pagination"></div>
 </main>
 <footer class="foot wrap">黑神話天堂資料圖鑑 · 資料來源：droplist.xls<br>分類由物品名稱自動辨識，實際設定仍以遊戲內資料為準。</footer>
 <button class="top" id="top" aria-label="回到頂端">↑</button>
-<script src="../js/monster.js?v=1"></script>
+<script src="../js/monster.js?v=2"></script>
 </body>
 </html>

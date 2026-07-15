@@ -10,14 +10,6 @@
     sort: document.querySelector("#sort")
   };
 
-  const fmtChance = n => {
-    if (n === 0) return "未設定";
-    if (n >= 10) return n.toLocaleString("zh-TW", { maximumFractionDigits: 2 }) + "%";
-    if (n >= 1) return n.toFixed(2).replace(/0+$/, "").replace(/\.$/, "") + "%";
-    if (n >= .01) return n.toFixed(3).replace(/0+$/, "").replace(/\.$/, "") + "%";
-    return n.toFixed(5).replace(/0+$/, "").replace(/\.$/, "") + "%";
-  };
-
   const esc = s => String(s).replace(/[&<>'"]/g, c => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
   })[c]);
@@ -35,22 +27,16 @@
     let list = DATA.map(monster => {
       let drops = monster.drops;
       if (q) {
-        const mobHit =
-          monster.name.toLowerCase().includes(q) ||
-          String(monster.id).includes(q);
+        const mobHit = monster.name.toLowerCase().includes(q);
 
         if (!mobHit) {
           drops = drops.filter(drop =>
-            drop.name.toLowerCase().includes(q) ||
-            String(drop.itemId).includes(q)
+            drop.name.toLowerCase().includes(q)
           );
         }
         if (!mobHit && !drops.length) return null;
       }
-
-      if (state.filter === "稀有") {
-        drops = drops.filter(drop => drop.chance > 0 && drop.chance <= .1);
-      } else if (state.filter !== "全部") {
+      if (state.filter !== "全部") {
         drops = drops.filter(drop => drop.category === state.filter);
       }
 
@@ -60,7 +46,6 @@
 
     list.sort((a, b) => {
       if (state.sort === "drops") return b.drops.length - a.drops.length || a.name.localeCompare(b.name, "zh-Hant");
-      if (state.sort === "rare") return b.rareCount - a.rareCount || a.name.localeCompare(b.name, "zh-Hant");
       if (state.sort === "id") return Number(a.id) - Number(b.id);
       return a.name.localeCompare(b.name, "zh-Hant");
     });
@@ -71,7 +56,6 @@
   function card(monster) {
     const q = state.q.trim();
     const drops = monster.drops.map(drop => {
-      const rare = drop.chance > 0 && drop.chance <= .1 ? " rare" : "";
       const quantity = drop.min === drop.max
         ? `${drop.min}`
         : `${drop.min}～${drop.max}`;
@@ -80,10 +64,8 @@
         <div class="drop">
           <div>
             <div class="item">${hi(drop.name, q)}<span class="badge">${esc(drop.category)}</span></div>
-            <div class="item-id">ITEM ID：${drop.itemId}</div>
           </div>
           <div class="meta">
-            <span class="chance${rare}">${fmtChance(drop.chance)}</span>
             <span class="qty">數量 ${quantity}</span>
           </div>
         </div>`;
@@ -148,7 +130,7 @@
 
   async function loadData() {
     try {
-      const response = await fetch("../data/monsters.json?v=1", { cache: "no-store" });
+      const response = await fetch("../data/monsters.json?v=2", { cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
       DATA = await response.json();
