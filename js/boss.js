@@ -90,7 +90,7 @@
 
   async function loadBosses() {
     try {
-      const response = await fetch("../data/bosses.json", {
+      const response = await fetch("../data/bosses.json?v=2", {
         cache: "no-store"
       });
 
