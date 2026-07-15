@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>黑神話天堂｜官方資料庫</title>
-  <meta name="description" content="黑神話天堂官方資料庫，包含 BOSS 看板、武器圖鑑、怪物掉落與卡冊查詢。">
-  <link rel="stylesheet" href="./css/style.css?v=3">
+  <meta name="description" content="黑神話天堂官方資料庫：BOSS 即時看板、怪物掉落與卡冊查詢。">
+  <link rel="stylesheet" href="./css/style.css?v=4">
 </head>
 <body>
   <nav class="nav">
     <a class="active" href="./">首頁</a>
     <a href="./boss/">BOSS 看板</a>
-    <a href="./weapon/">武器圖鑑</a>
     <a href="./monster/">怪物掉落</a>
     <a href="./cardbook/">卡冊查詢</a>
   </nav>
@@ -21,7 +20,7 @@
       <div class="eyebrow">BLACK MYTH LINEAGE</div>
       <h1>黑神話天堂</h1>
       <div class="home-subtitle">OFFICIAL DATABASE</div>
-      <p>查詢世界 BOSS、武器、怪物掉落與角色卡冊收藏。</p>
+      <p>目前專注完成 BOSS 即時看板、怪物掉落與卡冊查詢三項核心功能。</p>
       <a class="primary-button" href="./boss/">進入 BOSS 即時看板</a>
     </div>
   </header>
@@ -29,66 +28,26 @@
   <main class="wrap home-main">
     <section class="home-section">
       <div class="section-heading">
-        <div>
-          <div class="eyebrow">DATABASE</div>
-          <h2>資料庫功能</h2>
-        </div>
-        <p>各項內容會依開發進度陸續上線。</p>
+        <div><div class="eyebrow">DATABASE</div><h2>核心功能</h2></div>
+        <p>其他圖鑑與功能暫不開發。</p>
       </div>
 
-      <div class="feature-grid">
+      <div class="feature-grid feature-grid-three">
         <a class="feature-card available" href="./boss/">
           <div class="feature-icon">♜</div>
-          <div class="feature-content">
-            <span class="feature-status">已開放</span>
-            <h3>BOSS 即時看板</h3>
-            <p>查詢出生時間、已出生狀態與下一隻 BOSS 倒數。</p>
-          </div>
+          <div class="feature-content"><span class="feature-status">已開放</span><h3>BOSS 即時看板</h3><p>查看下一隻 BOSS、倒數時間與已出生狀態。</p></div>
         </a>
-
-        <a class="feature-card preparing" href="./weapon/">
-          <div class="feature-icon">⚔</div>
-          <div class="feature-content">
-            <span class="feature-status">建置中</span>
-            <h3>武器圖鑑</h3>
-            <p>依武器類型、品質與能力快速搜尋。</p>
-          </div>
-        </a>
-
-        <a class="feature-card preparing" href="./monster/">
+        <a class="feature-card available" href="./monster/">
           <div class="feature-icon">♞</div>
-          <div class="feature-content">
-            <span class="feature-status">建置中</span>
-            <h3>怪物掉落</h3>
-            <p>搜尋怪物名稱、掉落物與取得來源。</p>
-          </div>
+          <div class="feature-content"><span class="feature-status">已開放</span><h3>怪物掉落</h3><p>搜尋怪物、物品名稱、編號、機率與掉落數量。</p></div>
         </a>
-
         <a class="feature-card preparing" href="./cardbook/">
           <div class="feature-icon">▣</div>
-          <div class="feature-content">
-            <span class="feature-status">建置中</span>
-            <h3>卡冊查詢</h3>
-            <p>登入帳號後查看變身、娃娃收藏與附加能力。</p>
-          </div>
+          <div class="feature-content"><span class="feature-status">建置中</span><h3>卡冊查詢</h3><p>未來可登入帳號查看角色收藏、完成率與附加能力。</p></div>
         </a>
       </div>
     </section>
-
-    <section class="home-section home-note panel">
-      <div>
-        <div class="eyebrow">NOTICE</div>
-        <h2>目前版本</h2>
-      </div>
-      <p>
-        BOSS 看板目前已可使用；即時資料仍為靜態匯出版本。
-        後續串接伺服器 API 後，玩家擊殺 BOSS，頁面才會取得新的重生時間。
-      </p>
-    </section>
   </main>
-
-  <footer class="footer">
-    黑神話天堂・官方資料庫
-  </footer>
+  <footer class="footer">黑神話天堂・官方資料庫</footer>
 </body>
 </html>
