@@ -1,4 +1,4 @@
-window.BOSS_DATA = [
+[
   {
     "name": "亢金龍",
     "spawnTime": "2026-07-11 07:07:59"
@@ -343,4 +343,4 @@ window.BOSS_DATA = [
     "name": "木乃伊王",
     "spawnTime": "2026-07-14 03:37:06"
   }
-];
+]
