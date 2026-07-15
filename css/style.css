@@ -181,3 +181,10 @@ input,select{background:#111514;color:var(--text);border:1px solid var(--line);p
   .feature-grid{grid-template-columns:1fr}
   .home-note{grid-template-columns:1fr}
 }
+
+/* 三功能首頁與卡冊建置中頁 */
+.feature-grid-three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.placeholder-page{min-height:calc(100vh - 70px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 20px}
+.placeholder-page h1{font-size:clamp(38px,7vw,70px);margin:12px 0;color:#f2ece0}
+.placeholder-page p{max-width:680px;color:var(--muted);line-height:1.9;margin:0 0 28px}
+@media(max-width:900px){.feature-grid-three{grid-template-columns:1fr}}
