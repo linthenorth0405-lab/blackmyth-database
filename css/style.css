@@ -188,3 +188,185 @@ input,select{background:#111514;color:var(--text);border:1px solid var(--line);p
 .placeholder-page h1{font-size:clamp(38px,7vw,70px);margin:12px 0;color:#f2ece0}
 .placeholder-page p{max-width:680px;color:var(--muted);line-height:1.9;margin:0 0 28px}
 @media(max-width:900px){.feature-grid-three{grid-template-columns:1fr}}
+
+/* ===== 卡冊蒐藏查詢 ===== */
+.cardbook-wrap{
+  width:min(1240px,calc(100% - 24px));
+  min-height:calc(100vh - 120px);
+  margin:auto;
+  padding:48px 0 60px;
+}
+.cardbook-hero{text-align:center;margin-bottom:28px}
+.cardbook-hero h1{
+  margin:10px 0 8px;
+  color:#f0d18a;
+  font-size:clamp(34px,6vw,58px);
+  letter-spacing:.12em;
+}
+.cardbook-hero p{color:var(--muted);line-height:1.8}
+.cardbook-panel{
+  border:1px solid #795d38;
+  background:linear-gradient(180deg,rgba(50,38,24,.96),rgba(25,19,13,.98));
+  box-shadow:inset 0 0 0 1px rgba(245,210,145,.06),0 14px 36px rgba(0,0,0,.38);
+}
+.login-panel{max-width:510px;margin:auto;padding:26px}
+.login-heading h2{margin:0 0 7px;color:#edd093}
+.login-heading p{margin:0 0 22px;color:#ae9d81;font-size:13px;line-height:1.7}
+.cardbook-field{display:block;margin-bottom:15px}
+.cardbook-field span{display:block;margin-bottom:7px;color:#d7bd88}
+.cardbook-field input,
+.cardbook-toolbar input,
+.cardbook-toolbar select{
+  width:100%;
+  padding:12px 13px;
+  color:#f3ead9;
+  border:1px solid #665034;
+  background:#130f0b;
+  font:inherit;
+}
+.cardbook-field input:focus,
+.cardbook-toolbar input:focus{
+  outline:none;
+  border-color:#c99e4e;
+  box-shadow:0 0 0 2px rgba(201,158,78,.14);
+}
+.cardbook-primary,
+.cardbook-secondary,
+.character-button,
+.view-button,
+.type-button,
+.scope-button{
+  border:1px solid #775b35;
+  padding:10px 14px;
+  cursor:pointer;
+  color:#d8c5a2;
+  background:linear-gradient(180deg,#3a2d1e,#211810);
+  font:inherit;
+  font-weight:700;
+}
+.cardbook-primary{
+  width:100%;
+  color:#21170b;
+  background:linear-gradient(180deg,#d8b971,#9e7138);
+}
+.cardbook-primary:disabled{opacity:.55;cursor:wait}
+.cardbook-message{min-height:23px;margin-top:13px;text-align:center;color:#e2bd70}
+.security-note{
+  margin-top:14px;
+  color:#a89677;
+  font-size:12px;
+  line-height:1.7;
+}
+.cardbook-dashboard[hidden],
+#cardsView[hidden],
+#statsView[hidden],
+#cardControls[hidden]{display:none!important}
+.account-row,
+.character-summary{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+  padding:18px 20px;
+}
+.account-row{margin-bottom:13px}
+.account-row strong{color:#f0cf84}
+.character-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.character-button.active,
+.view-button.active,
+.type-button.active,
+.scope-button.active{
+  color:#ffe7ae;
+  border-color:#d3aa58;
+  background:linear-gradient(180deg,#8b6532,#4a341b);
+}
+.character-summary h2{margin:6px 0 0;color:#efd293;font-size:28px}
+.collection-summary{display:flex;gap:10px;flex-wrap:wrap}
+.collection-summary article{
+  min-width:155px;
+  padding:11px 13px;
+  border:1px solid #60492e;
+  background:#15100b;
+}
+.collection-summary strong{display:block;color:#efc873;font-size:21px}
+.collection-summary span{color:#aa987b;font-size:12px}
+.cardbook-toolbar{
+  position:sticky;
+  top:0;
+  z-index:4;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:18px 0;
+  padding:11px;
+  backdrop-filter:blur(8px);
+}
+.toolbar-group{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.cardbook-toolbar input{min-width:230px;width:auto}
+.cardbook-toolbar select{width:auto}
+.cardbook-section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+  gap:15px;
+  margin:24px 2px 12px;
+  padding-bottom:8px;
+  border-bottom:1px solid #6f5735;
+}
+.cardbook-section-heading h2{margin:0;color:#efcf88;font-size:21px}
+.cardbook-section-heading span{color:#aa987b;font-size:13px}
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:12px;
+}
+.collection-card{
+  min-height:112px;
+  padding:15px;
+  border:1px solid #745936;
+  background:linear-gradient(180deg,rgba(52,40,26,.96),rgba(25,20,14,.98));
+  transition:.18s;
+}
+.collection-card:hover{transform:translateY(-2px);border-color:#b88a45}
+.collection-card.missing{opacity:.4;filter:grayscale(1) brightness(.78)}
+.collection-card.missing:hover{opacity:.67}
+.collection-card-head{display:flex;justify-content:space-between;gap:10px}
+.collection-card-name{color:#ead9b8;font-weight:700;line-height:1.5}
+.collection-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px;color:#aa987b;font-size:11px}
+.rarity{padding:2px 7px;border:1px solid #654f33}
+.rarity-綠{color:#8fc579}.rarity-藍{color:#8cb7de}.rarity-紅{color:#e18b7e}
+.rarity-紫{color:#c19bd4}.rarity-金{color:#f0cb68}
+.collection-status{height:24px;padding:3px 8px;white-space:nowrap;font-size:12px;font-weight:800}
+.collection-status.owned{color:#9dd38e;border:1px solid #4c7d4e;background:#28462a}
+.collection-status.not-owned{color:#d98f83;border:1px solid #75413a;background:#462723}
+.collection-abilities{
+  margin-top:9px;
+  padding-top:7px;
+  color:#cbbd9f;
+  border-top:1px dashed #5d472f;
+  font-size:12px;
+  line-height:1.65;
+}
+.stats-scope-row{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 5px}
+.ability-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:12px;
+}
+.ability-card{
+  padding:17px;
+  border:1px solid #745936;
+  background:linear-gradient(180deg,rgba(52,40,26,.96),rgba(25,20,14,.98));
+}
+.ability-card div{color:#d7c49f}
+.ability-card strong{display:block;margin:7px 0;color:#f0c873;font-size:27px}
+.ability-card span{color:#aa987b;font-size:12px}
+.cardbook-empty{grid-column:1/-1;padding:42px;text-align:center;color:#aa987b}
+@media(max-width:650px){
+  .cardbook-wrap{padding-top:35px}
+  .collection-summary article{flex:1;min-width:125px}
+  .cardbook-toolbar{position:static}
+  .cardbook-toolbar input,.cardbook-toolbar select{width:100%;min-width:100%}
+}

@@ -1,1 +1,131 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>黑神話天堂｜卡冊查詢</title><link rel="stylesheet" href="../css/style.css?v=4"></head><body><nav class="nav"><a href="../">首頁</a><a href="../boss/">BOSS 看板</a><a href="../monster/">怪物掉落</a><a class="active" href="./">卡冊查詢</a></nav><main class="wrap placeholder-page"><div class="eyebrow">CARD COLLECTION</div><h1>卡冊查詢</h1><p>此功能正在建置中。完成後將可登入遊戲帳號，查看角色的變身、娃娃收藏與附加能力統計。</p><a class="primary-button" href="../">返回首頁</a></main></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>黑神話天堂｜卡冊蒐藏查詢</title>
+  <meta name="description" content="登入後查詢角色的變身卡、娃娃卡收藏與附加能力統計。">
+  <link rel="stylesheet" href="../css/style.css?v=5">
+</head>
+<body>
+  <nav class="nav">
+    <a href="../">首頁</a>
+    <a href="../boss/">BOSS 看板</a>
+    <a href="../monster/">怪物掉落</a>
+    <a class="active" href="./">卡冊查詢</a>
+  </nav>
+
+  <main class="cardbook-wrap">
+    <header class="cardbook-hero">
+      <div class="eyebrow">COLLECTION BOOK</div>
+      <h1>卡冊蒐藏查詢</h1>
+      <p>登入遊戲帳號後，查看角色的變身、娃娃卡冊與收藏能力。</p>
+    </header>
+
+    <section id="loginPanel" class="cardbook-panel login-panel">
+      <div class="login-heading">
+        <h2>玩家登入</h2>
+        <p>帳號密碼僅送至黑神話天堂的驗證伺服器，不會儲存在此網頁。</p>
+      </div>
+
+      <form id="loginForm">
+        <label class="cardbook-field">
+          <span>遊戲帳號</span>
+          <input id="accountInput" name="account" autocomplete="username" required placeholder="請輸入遊戲帳號">
+        </label>
+
+        <label class="cardbook-field">
+          <span>遊戲密碼</span>
+          <input id="passwordInput" name="password" type="password" autocomplete="current-password" required placeholder="請輸入遊戲密碼">
+        </label>
+
+        <button id="loginButton" class="cardbook-primary" type="submit">登入查詢</button>
+      </form>
+
+      <div id="loginMessage" class="cardbook-message" role="status"></div>
+
+      <div class="security-note">
+        正式啟用前，需要由 Steven 在伺服器建立登入與卡冊查詢 API。GitHub Pages 不會存放
+        accounts、characters、character_quests 或玩家密碼資料。
+      </div>
+    </section>
+
+    <section id="dashboard" class="cardbook-dashboard" hidden>
+      <div class="cardbook-panel account-row">
+        <div>目前帳號：<strong id="accountName"></strong></div>
+        <button id="logoutButton" class="cardbook-secondary" type="button">登出</button>
+      </div>
+
+      <div id="characterTabs" class="character-tabs"></div>
+
+      <section class="cardbook-panel character-summary">
+        <div>
+          <div class="eyebrow">CHARACTER</div>
+          <h2 id="characterName">—</h2>
+        </div>
+
+        <div class="collection-summary">
+          <article>
+            <strong id="transformProgress">0 / 0</strong>
+            <span>變身卡蒐藏</span>
+          </article>
+          <article>
+            <strong id="dollProgress">0 / 0</strong>
+            <span>娃娃卡蒐藏</span>
+          </article>
+          <article>
+            <strong id="totalProgress">0%</strong>
+            <span>總完成率</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="cardbook-toolbar cardbook-panel">
+        <div class="toolbar-group">
+          <button class="view-button active" data-view="cards" type="button">卡片蒐藏</button>
+          <button class="view-button" data-view="stats" type="button">能力統計</button>
+        </div>
+
+        <div id="cardControls" class="toolbar-group">
+          <button class="type-button active" data-type="全部" type="button">全部</button>
+          <button class="type-button" data-type="變身" type="button">變身卡</button>
+          <button class="type-button" data-type="娃娃" type="button">娃娃卡</button>
+
+          <select id="statusFilter" aria-label="收藏狀態">
+            <option value="all">全部狀態</option>
+            <option value="owned">已蒐藏</option>
+            <option value="missing">未蒐藏</option>
+          </select>
+
+          <input id="cardSearch" type="search" placeholder="搜尋卡片名稱或能力">
+        </div>
+      </section>
+
+      <section id="cardsView">
+        <div class="cardbook-section-heading">
+          <h2 id="cardListTitle">全部卡片</h2>
+          <span id="cardResultCount"></span>
+        </div>
+        <div id="cardGrid" class="collection-grid"></div>
+      </section>
+
+      <section id="statsView" hidden>
+        <div class="stats-scope-row">
+          <button class="scope-button active" data-scope="全部" type="button">全部卡片合計</button>
+          <button class="scope-button" data-scope="變身" type="button">只計算變身卡</button>
+          <button class="scope-button" data-scope="娃娃" type="button">只計算娃娃卡</button>
+        </div>
+
+        <div class="cardbook-section-heading">
+          <h2 id="statsTitle">已蒐藏卡片附加能力總計</h2>
+          <span id="statsCount"></span>
+        </div>
+        <div id="statsGrid" class="ability-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">黑神話天堂・官方資料庫</footer>
+  <script src="../js/cardbook.js?v=1"></script>
+</body>
+</html>
